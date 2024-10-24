@@ -7,7 +7,7 @@ const snakeColor = "#fff";
 const foodColor = "yellow";
 const backgroundColor = "green";
 
-let snake = [{ x: 9, y: 9 }];
+let snake = [{ x: 0, y: 0 }];
 let food = generateFood();
 let direction = { x: 0, y: 0 };
 let score = 0;
@@ -132,30 +132,10 @@ function resetGame() {
   food = generateFood();
   direction = { x: 0, y: 0 };
   score = 0;
-  gameSpeed = 100;
+  gameSpeed = 200;
 }
 
 function updateScore() {
   document.getElementById("score").innerText = "Score:" + score;
 }
-function touchControl(event) {
-    const touch = event.touches[0];
-    const canvasRect = canvas.getBoundingClientRect();
-    const touchX = touch.clientX - canvasRect.left;
-    const touchY = touch.clientY - canvasRect.top;
 
-    // Determine the direction based on touch position
-    if (touchY < canvasRect.height / 3) {
-        direction = { x: 0, y: -1 }; // Up
-    } else if (touchY > canvasRect.height * 2 / 3) {
-        direction = { x: 0, y: 1 }; // Down
-    } else if (touchX < canvasRect.width / 3) {
-        direction = { x: -1, y: 0 }; // Left
-    } else if (touchX > canvasRect.width * 2 / 3) {
-        direction = { x: 1, y: 0 }; // Right
-    }
-}
-
-// Event listeners
-setInterval(moveSnake, 100);
-canvas.addEventListener("touchstart",touchControl);
