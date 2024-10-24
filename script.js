@@ -1,6 +1,6 @@
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
-const gameContainer = document.getElementById("game")
+const gameContainer = document.getElementsByClassName("game-container")
 const gridSize = 20;
 const canvasSize = canvas.width;
 const snakeColor = '#fff';
